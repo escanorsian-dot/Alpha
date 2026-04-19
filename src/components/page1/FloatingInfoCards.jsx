@@ -3,49 +3,43 @@ import TypeRevealText from "./TypeRevealText";
 
 function cardTheme(style, accent) {
   const base = {
-    border: `1px solid ${accent}33`,
-    boxShadow: `0 0 28px ${accent}14, inset 0 1px 0 rgba(255,255,255,0.05)`,
-    background:
-      "linear-gradient(180deg, rgba(30,8,2,0.84), rgba(10,3,1,0.74))",
+    border: `1px solid ${accent}44`,
+    boxShadow: `0 0 35px ${accent}15, inset 0 1px 1px rgba(255,255,255,0.08)`,
+    background: "linear-gradient(165deg, rgba(25,7,2,0.92), rgba(8,3,1,0.85))",
   };
 
   if (style === "working") {
     return {
       ...base,
-      background:
-        "linear-gradient(180deg, rgba(44,12,3,0.88), rgba(14,5,1,0.78))",
+      background: "linear-gradient(165deg, rgba(40,10,2,0.95), rgba(12,4,1,0.88))",
     };
   }
 
   if (style === "model") {
     return {
       ...base,
-      background:
-        "linear-gradient(180deg, rgba(36,14,6,0.86), rgba(10,5,2,0.78))",
+      background: "linear-gradient(165deg, rgba(32,12,5,0.94), rgba(10,4,2,0.88))",
     };
   }
 
   if (style === "data") {
     return {
       ...base,
-      background:
-        "linear-gradient(180deg, rgba(28,10,2,0.90), rgba(8,4,1,0.80))",
+      background: "linear-gradient(165deg, rgba(24,8,2,0.96), rgba(8,4,1,0.90))",
     };
   }
 
   if (style === "graphs") {
     return {
       ...base,
-      background:
-        "linear-gradient(180deg, rgba(44,14,3,0.92), rgba(12,4,1,0.80))",
+      background: "linear-gradient(165deg, rgba(42,12,3,0.96), rgba(10,4,1,0.88))",
     };
   }
 
   if (style === "credits") {
     return {
       ...base,
-      background:
-        "linear-gradient(180deg, rgba(34,12,5,0.88), rgba(10,4,2,0.78))",
+      background: "linear-gradient(165deg, rgba(30,10,4,0.94), rgba(8,3,2,0.88))",
     };
   }
 
@@ -57,29 +51,30 @@ function renderBlock(section) {
 
   if (section.style === "data") {
     return (
-      <div style={{ marginTop: 16, display: "grid", gap: 8 }}>
+      <div style={{ marginTop: 20, display: "grid", gap: 10 }}>
         {[
           ["Voltage", "292.7 V"],
           ["Current", "8.78 A"],
           ["Power", "2571 W"],
-          ["Relay", "ON"],
+          ["Relay", "ACTIVE"],
         ].map(([label, value], i) => (
           <div
             key={label}
             style={{
               display: "flex",
               justifyContent: "space-between",
+              alignItems: "center",
               gap: 12,
-              border: `1px solid ${accent}22`,
-              borderRadius: 12,
-              padding: "10px 12px",
-              background: "rgba(255,255,255,0.03)",
+              border: `1px solid ${accent}18`,
+              borderRadius: 14,
+              padding: "12px 14px",
+              background: "rgba(255,255,255,0.02)",
               opacity: 0,
-              animation: `rowFadeIn 360ms ease ${500 + i * 120}ms forwards`,
+              animation: `rowFadeIn 400ms ease ${550 + i * 100}ms forwards`,
             }}
           >
-            <span>{label}</span>
-            <strong>{value}</strong>
+            <span style={{ fontSize: 13, color: "rgba(255,255,255,0.5)", letterSpacing: "0.05em" }}>{label}</span>
+            <strong style={{ fontSize: 15, color: accent, textShadow: `0 0 10px ${accent}44` }}>{value}</strong>
           </div>
         ))}
       </div>
@@ -90,29 +85,32 @@ function renderBlock(section) {
     return (
       <div
         style={{
-          marginTop: 16,
-          height: 150,
+          marginTop: 20,
+          height: 160,
           display: "flex",
           alignItems: "end",
-          gap: 8,
-          padding: 12,
-          borderRadius: 16,
-          border: `1px solid ${accent}22`,
-          background: "rgba(255,255,255,0.03)",
+          gap: 6,
+          padding: "16px 14px",
+          borderRadius: 18,
+          border: `1px solid ${accent}18`,
+          background: "rgba(255,255,255,0.02)",
+          position: "relative",
+          overflow: "hidden"
         }}
       >
-        {[44, 88, 70, 120, 82, 138].map((h, i) => (
+        <div style={{ position: "absolute", inset: 0, opacity: 0.05, backgroundImage: `linear-gradient(${accent}33 1px, transparent 1px)`, backgroundSize: "100% 20px", pointerEvents: "none" }} />
+        {[44, 88, 70, 120, 82, 138, 95].map((h, i) => (
           <div
             key={i}
             style={{
               flex: 1,
               height: h,
-              borderRadius: "10px 10px 0 0",
-              background: `linear-gradient(180deg, ${accent}, rgba(255,120,30,0.32))`,
-              boxShadow: `0 0 14px ${accent}22`,
+              borderRadius: "4px 4px 1px 1px",
+              background: `linear-gradient(180deg, ${accent}, ${accent}33)`,
+              boxShadow: `0 0 12px ${accent}33`,
               transformOrigin: "bottom",
               transform: "scaleY(0)",
-              animation: `barRise 500ms cubic-bezier(0.16, 1, 0.3, 1) ${500 + i * 90}ms forwards`,
+              animation: `barRise 600ms cubic-bezier(0.2, 1, 0.2, 1) ${600 + i * 80}ms forwards`,
             }}
           />
         ))}
@@ -122,20 +120,25 @@ function renderBlock(section) {
 
   if (section.style === "credits") {
     return (
-      <div style={{ marginTop: 16, display: "grid", gap: 8 }}>
+      <div style={{ marginTop: 20, display: "grid", gap: 10 }}>
         {["Sriyansh Kumar", "Aniket Kumar", "Shubham", "Roshan", "Uday"].map((name, i) => (
           <div
             key={name}
             style={{
-              borderRadius: 12,
-              border: `1px solid ${accent}22`,
-              padding: "10px 12px",
-              background: "rgba(255,255,255,0.03)",
+              borderRadius: 14,
+              border: `1px solid ${accent}18`,
+              padding: "12px 14px",
+              background: "rgba(255,255,255,0.02)",
               opacity: 0,
-              transform: "translateY(12px)",
-              animation: `rowFadeInMove 360ms ease ${520 + i * 110}ms forwards`,
+              transform: "translateY(10px)",
+              animation: `rowFadeInMove 400ms ease ${550 + i * 90}ms forwards`,
+              fontSize: 15,
+              display: "flex",
+              alignItems: "center",
+              gap: 12
             }}
           >
+            <div style={{ width: 6, height: 6, borderRadius: "50%", background: accent, boxShadow: `0 0 8px ${accent}` }} />
             {name}
           </div>
         ))}
@@ -146,19 +149,22 @@ function renderBlock(section) {
   return (
     <div
       style={{
-        marginTop: 16,
-        borderRadius: 16,
-        border: `1px solid ${accent}22`,
-        background: "rgba(255,255,255,0.03)",
-        padding: 14,
+        marginTop: 20,
+        borderRadius: 18,
+        border: `1px solid ${accent}18`,
+        background: "rgba(255,255,255,0.02)",
+        padding: 18,
         lineHeight: 1.7,
-        color: "rgba(255,239,217,0.88)",
+        color: "rgba(255,245,230,0.9)",
+        fontSize: 14,
+        position: "relative"
       }}
     >
+      <div style={{ position: "absolute", top: 0, left: 18, transform: "translateY(-50%)", background: "#110401", padding: "0 8px", fontSize: 10, color: accent, letterSpacing: "0.1em" }}>TERMINAL_OUTPUT</div>
       <TypeRevealText
-        text="This section is active and ready for richer project-specific custom visuals."
+        text="Interface synchronized. Sub-system diagnostics confirmed. Ready for project-specific visual data injection."
         speed={14}
-        delay={500}
+        delay={600}
       />
     </div>
   );
@@ -169,70 +175,77 @@ function FloatingCard({ section, index }) {
     <div
       style={{
         position: "absolute",
-        zIndex: 7 + index,
-        color: "#fff3e2",
-        borderRadius: 24,
-        padding: 20,
-        backdropFilter: "blur(16px)",
+        zIndex: 10 + index,
+        color: "#fff",
+        borderRadius: 28,
+        padding: "24px 28px",
+        backdropFilter: "blur(24px) saturate(120%)",
+        WebkitBackdropFilter: "blur(24px) saturate(120%)",
         boxSizing: "border-box",
-        animation: `floatCardIn 520ms cubic-bezier(0.16, 1, 0.3, 1)`,
-        maxWidth: "92vw",
+        animation: `floatCardIn 600ms cubic-bezier(0.2, 1, 0.2, 1) forwards`,
+        maxWidth: "94vw",
+        width: "min(400px, 94vw)",
         ...section.position,
         ...cardTheme(section.style, section.accent),
       }}
     >
       <div
         style={{
-          fontSize: 11,
-          letterSpacing: "0.32em",
+          fontSize: 10,
+          fontWeight: 700,
+          letterSpacing: "0.4em",
           textTransform: "uppercase",
           color: section.accent,
           opacity: 0,
-          animation: "rowFadeIn 320ms ease 80ms forwards",
+          animation: "rowFadeIn 400ms ease 100ms forwards",
+          marginBottom: 16
         }}
       >
-        {section.kicker} · Key {section.key}
+        {section.kicker} · 0{index + 1}
       </div>
 
       <h3
         style={{
-          marginTop: 12,
-          marginBottom: 0,
-          fontSize: "clamp(22px, 2vw, 34px)",
-          lineHeight: 1.05,
-          letterSpacing: "-0.03em",
+          margin: 0,
+          fontSize: "clamp(24px, 2.5vw, 38px)",
+          fontWeight: 800,
+          lineHeight: 1,
+          letterSpacing: "-0.04em",
           opacity: 0,
-          animation: "rowFadeInMove 380ms ease 140ms forwards",
+          animation: "rowFadeInMove 500ms ease 150ms forwards",
+          color: "#fff",
+          textShadow: "0 2px 10px rgba(0,0,0,0.3)"
         }}
       >
         {section.title}
       </h3>
 
-      <p
+      <div
         style={{
-          marginTop: 14,
+          marginTop: 18,
           marginBottom: 0,
-          color: "rgba(255,236,214,0.82)",
-          lineHeight: 1.75,
+          color: "rgba(255,240,225,0.85)",
+          lineHeight: 1.7,
           fontSize: 15,
-          minHeight: 90,
+          minHeight: 80,
         }}
       >
-        <TypeRevealText text={section.description} speed={10} delay={260} />
-      </p>
+        <TypeRevealText text={section.description} speed={12} delay={300} />
+      </div>
 
-      <div style={{ marginTop: 14, display: "grid", gap: 8 }}>
+      <div style={{ marginTop: 20, display: "grid", gap: 10 }}>
         {section.points.map((point, i) => (
           <div
             key={i}
             style={{
               borderLeft: `2px solid ${section.accent}`,
-              paddingLeft: 10,
+              paddingLeft: 14,
               lineHeight: 1.6,
-              color: "rgba(255,242,226,0.92)",
+              color: "rgba(255,248,240,0.95)",
+              fontSize: 14,
               opacity: 0,
-              transform: "translateX(12px)",
-              animation: `pointSlideIn 360ms ease ${520 + i * 120}ms forwards`,
+              transform: "translateX(15px)",
+              animation: `pointSlideIn 450ms ease ${500 + i * 110}ms forwards`,
             }}
           >
             {point}
@@ -246,7 +259,7 @@ function FloatingCard({ section, index }) {
         @keyframes floatCardIn {
           0% {
             opacity: 0;
-            transform: translateY(28px) scale(0.96);
+            transform: translateY(35px) scale(0.95);
           }
           100% {
             opacity: 1;
@@ -255,18 +268,14 @@ function FloatingCard({ section, index }) {
         }
 
         @keyframes rowFadeIn {
-          0% {
-            opacity: 0;
-          }
-          100% {
-            opacity: 1;
-          }
+          0% { opacity: 0; }
+          100% { opacity: 1; }
         }
 
         @keyframes rowFadeInMove {
           0% {
             opacity: 0;
-            transform: translateY(12px);
+            transform: translateY(15px);
           }
           100% {
             opacity: 1;
@@ -277,7 +286,7 @@ function FloatingCard({ section, index }) {
         @keyframes pointSlideIn {
           0% {
             opacity: 0;
-            transform: translateX(12px);
+            transform: translateX(15px);
           }
           100% {
             opacity: 1;

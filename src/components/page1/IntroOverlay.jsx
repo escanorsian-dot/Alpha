@@ -167,16 +167,16 @@ export default function IntroOverlay({ triggerA, flashKey = 0 }) {
                   backgroundClip: "text",
                   color: "transparent",
                   textShadow: isPulsing
-                    ? "0 0 10px rgba(255,220,150,0.45), 0 0 26px rgba(255,140,40,0.42), 0 10px 28px rgba(0,0,0,0.34)"
-                    : "0 12px 28px rgba(0,0,0,0.34)",
+                    ? "0 0 12px rgba(255,220,150,0.6), 0 0 35px rgba(255,140,40,0.5), 0 10px 30px rgba(0,0,0,0.4)"
+                    : "0 15px 35px rgba(0,0,0,0.4)",
                   filter: isPulsing
-                    ? "drop-shadow(0 0 10px rgba(255,220,140,0.55)) drop-shadow(0 0 24px rgba(255,145,40,0.35))"
-                    : "drop-shadow(0 2px 0 rgba(255,250,240,0.14)) drop-shadow(0 0 22px rgba(255,170,80,0.12))",
+                    ? "drop-shadow(0 0 12px rgba(255,220,140,0.65)) drop-shadow(0 0 30px rgba(255,145,40,0.4))"
+                    : "drop-shadow(0 2px 0 rgba(255,250,240,0.18)) drop-shadow(0 0 25px rgba(255,170,80,0.15))",
                   transform: active
                     ? isPulsing
-                      ? "translateY(-4px) scale(1.045)"
+                      ? "translateY(-6px) scale(1.06)"
                       : "translateY(0) scale(1)"
-                    : "translateY(-100px) scale(1.12)",
+                    : "translateY(-120px) scale(1.15)",
                   opacity: active ? 1 : 0,
                   transition:
                     "transform 140ms ease, filter 140ms ease, text-shadow 140ms ease, background 140ms ease",
@@ -215,45 +215,44 @@ export default function IntroOverlay({ triggerA, flashKey = 0 }) {
           bottom: "8.5%",
           transform: active
             ? "translateX(-50%) translateY(0) scale(1)"
-            : "translateX(-50%) translateY(90px) scale(0.94)",
+            : "translateX(-50%) translateY(60px) scale(0.96)",
           opacity: active ? 1 : 0,
-          transition: "all 1800ms cubic-bezier(0.16, 1, 0.3, 1) 1600ms",
-          padding: "14px 24px",
-          borderRadius: "16px",
-          background:
-            "linear-gradient(180deg, rgba(75,24,8,0.50), rgba(16,6,2,0.74))",
-          border: "1px solid rgba(255,186,96,0.14)",
-          boxShadow:
-            "0 12px 32px rgba(0,0,0,0.34), inset 0 1px 0 rgba(255,230,200,0.08)",
-          backdropFilter: "blur(8px)",
+          transition: "all 1400ms cubic-bezier(0.16, 1, 0.3, 1) 1600ms",
+          padding: "20px 32px",
+          borderRadius: "24px",
+          background: "linear-gradient(165deg, rgba(50,15,5,0.65), rgba(15,5,2,0.85))",
+          border: "1px solid rgba(255,180,100,0.25)",
+          boxShadow: "0 20px 50px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.1)",
+          backdropFilter: "blur(20px) saturate(120%)",
+          WebkitBackdropFilter: "blur(20px) saturate(120%)",
           textAlign: "center",
-          minWidth: "min(54vw, 620px)",
+          minWidth: "min(40vw, 500px)",
         }}
       >
         <div
           style={{
-            fontSize: "clamp(24px, 3vw, 42px)",
-            fontWeight: 800,
-            letterSpacing: "-0.03em",
-            color: "#ffd7aa",
+            fontSize: "clamp(26px, 2.5vw, 48px)",
+            fontWeight: 900,
+            letterSpacing: "-0.04em",
+            color: "#fff",
             textTransform: "uppercase",
-            textShadow:
-              "0 1px 0 rgba(255,245,230,0.18), 0 4px 10px rgba(0,0,0,0.3)",
+            textShadow: "0 0 20px rgba(255,160,50,0.4), 0 4px 15px rgba(0,0,0,0.4)",
           }}
         >
-          SYSTEM AWAKENING
+          SYSTEM READY
         </div>
 
         <div
           style={{
-            marginTop: "6px",
-            fontSize: "11px",
-            letterSpacing: "0.28em",
+            marginTop: "8px",
+            fontSize: "10px",
+            fontWeight: 700,
+            letterSpacing: "0.4em",
             textTransform: "uppercase",
-            color: "rgba(255,224,190,0.62)",
+            color: "rgba(255,180,100,0.8)",
           }}
         >
-          PRESS A TO TRIGGER TITLE SEQUENCE
+          [ PRESS 'A' TO INITIALIZE INTERFACE ]
         </div>
       </div>
 
