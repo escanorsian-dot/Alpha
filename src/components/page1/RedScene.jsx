@@ -221,7 +221,7 @@ function SceneLights({ activeKeys, flashKey }) {
 }
 
 function HologramModel({ flashKey, activeKeys }) {
-  const { scene } = useGLTF("/models/project-model.glb");
+  const { scene } = useGLTF("/models/project-model-compressed.glb");
   const rootRef = useRef(null);
   const pulseRef = useRef(0);
   const clonedScene = useMemo(() => scene.clone(true), [scene]);
@@ -404,4 +404,4 @@ export default function RedScene({ triggerA, flashKey, activeKeys = [] }) {
   );
 }
 
-useGLTF.preload("/models/project-model.glb");
+useGLTF.preload("/models/project-model-compressed.glb");

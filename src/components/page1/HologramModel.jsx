@@ -29,7 +29,7 @@ export default function HologramModel() {
   const ringARef = useRef(null);
   const ringBRef = useRef(null);
 
-  const gltf = useGLTF("/models/project-model.glb");
+  const gltf = useGLTF("/models/project-model-compressed.glb");
 
   const clonedScene = useMemo(() => {
     const clone = gltf.scene.clone(true);
@@ -112,4 +112,4 @@ export default function HologramModel() {
   );
 }
 
-useGLTF.preload("/models/project-model.glb");
+useGLTF.preload("/models/project-model-compressed.glb");

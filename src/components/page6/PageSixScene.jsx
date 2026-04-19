@@ -5,7 +5,7 @@ import * as THREE from "three";
 
 function HologramModel({ pulse = 0 }) {
   const group = useRef();
-  const { scene } = useGLTF("/models/project-model.glb");
+  const { scene } = useGLTF("/models/project-model-compressed.glb");
 
   const cloned = useMemo(() => {
     const copy = scene.clone(true);
